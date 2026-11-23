@@ -8,7 +8,7 @@ class car extends Vehical{
   String modelName ="M4";
   void displayDetails(){
     System.out.println("brand "+ brand);
-    System.out.println("modelname"+modelName);
+    System.out.println("modelname: "+modelName);
   }
 }
 public class SingleInheritance {

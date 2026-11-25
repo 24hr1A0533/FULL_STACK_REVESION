@@ -17,7 +17,7 @@ public class D3T24 {
     }catch(StringIndexOutOfBoundsException e){
       System.out.println("please check something went wrong "+e);
     }
-
+    data.close();
   }
   
 }

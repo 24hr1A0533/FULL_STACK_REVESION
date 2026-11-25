@@ -14,6 +14,7 @@ public class D3T23 {
     }catch(ArrayIndexOutOfBoundsException e){
       System.out.println("enter a valid number you entered wrong number "+e);
     }
+     data.close();
   }
-  
+ 
 }

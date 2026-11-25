@@ -5,13 +5,13 @@ class Person{
   }
 
 }
-class Employee extends Person{
+class MultilevelEmployee extends Person{
   int employeeid=99;
   void displayEmploye(){
     System.out.println("id:"+employeeid);
   }
 }
-class Manager extends Employee{
+class Manager extends MultilevelEmployee{
   String dept="cse";
   void displayManager(){
     System.out.println("dept:"+dept);

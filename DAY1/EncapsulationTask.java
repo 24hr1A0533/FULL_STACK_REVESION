@@ -1,4 +1,4 @@
-class Student{
+class EncapsulationStudent{
   private String name;
   private int roll_number;
   public String getName() {
@@ -16,7 +16,7 @@ class Student{
 }
 public class EncapsulationTask {
   public static void main(String[] args) {
-    Student obj = new Student();
+    EncapsulationStudent obj = new EncapsulationStudent();
     obj.setName("kishoreee");
     obj.setRoll_number(9824387);
     System.out.println( obj.getName());

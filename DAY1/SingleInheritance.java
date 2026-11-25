@@ -1,10 +1,10 @@
-class Vehical{
+class InheritedVehical{
   String brand ="BMW";
   void honk(){
     System.out.println("beep! Beep!");
   }
 }
-class car extends Vehical{
+class car extends InheritedVehical{
   String modelName ="M4";
   void displayDetails(){
     System.out.println("brand "+ brand);

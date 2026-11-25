@@ -1,10 +1,10 @@
-abstract class BankAccount{
+abstract class AbstractBankAccount{
   abstract double calculateInterest();
   void displayAccountType() {
     System.out.println( "Bank Account Details");
   }
 }
-class SavingsAccount  extends BankAccount{
+class SavingsAccount  extends AbstractBankAccount{
   double balance;
    double calculateInterest(){
     return balance * 0.05;

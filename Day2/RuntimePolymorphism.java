@@ -1,10 +1,10 @@
 
-  class Calculator{
+  class RuntimeCalculator{
   int add(int a , int b){
     return a+b;
   }
 }
-class Maths extends Calculator{
+class Maths extends RuntimeCalculator{
   @Override 
   int add(int a, int b){
     System.out.println("anil");
@@ -13,7 +13,7 @@ class Maths extends Calculator{
 }
 public class RuntimePolymorphism {
   public static void main(String[] args) {
-    Calculator obj = new Calculator();
+    RuntimeCalculator obj = new RuntimeCalculator();
     System.out.println(obj.add(2,2));
   
   }

@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class LargestOFThree {
   public static void main(String[] args) {
-    Scanner data=new Scanner(System.in);
+    try (Scanner data=new Scanner(System.in)) {
     System.out.println("enter three numbers one by one to check grater number among three");
     int num1=data.nextInt();
     int num2=data.nextInt();
@@ -12,6 +12,7 @@ public class LargestOFThree {
       System.out.println(num2+" is grater");
     }else{
       System.out.println(num3+" is grater");
+    }
     }
   }
   

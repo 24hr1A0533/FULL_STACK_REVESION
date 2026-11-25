@@ -1,10 +1,10 @@
-abstract class Vehical{
+abstract class AbstractVehical{
   abstract void start();
   void run(){
     System.out.println("running");
   }
 }
-class Bike extends Vehical{
+class Bike extends AbstractVehical{
   @Override 
   void start(){
     System.out.println("starting......");

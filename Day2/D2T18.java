@@ -1,7 +1,7 @@
-class Student{
+class ConstructorStudent{
   String name;
   double marks;
-  Student(String name,double marks){
+  ConstructorStudent(String name,double marks){
     this.name=name;
     this.marks=marks;
   }
@@ -11,7 +11,7 @@ class Student{
 }
 public class D2T18 {
   public static void main(String[] args) {
-    Student obj=new Student("kishore",99);
+    ConstructorStudent obj=new ConstructorStudent("kishore",99);
     obj.showResult();
   }
   

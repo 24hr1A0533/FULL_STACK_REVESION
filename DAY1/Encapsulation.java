@@ -1,4 +1,4 @@
-class Mobile{
+class EncapsulatedMobile{
   private String brand = "iq ";
   void  getter(){
     System.out.println(brand);
@@ -10,7 +10,7 @@ class Mobile{
 }
 public class Encapsulation {
   public static void main(String[] args) {
-    Mobile obj =new Mobile();
+    EncapsulatedMobile obj =new EncapsulatedMobile();
     obj.getter();
     obj.setter("samsung");
     obj.getter();

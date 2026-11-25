@@ -4,7 +4,7 @@ class animal{
     System.out.println("is eating "+name);
   }
 }
-class Dog extends animal{
+class TaskDog extends animal{
   String breed="jarman shafad";
   void bark(){
     System.out.println(name+" the "+breed+" is barking");
@@ -13,7 +13,7 @@ class Dog extends animal{
 
 public class inheritansetask1 {
   public static void main(String[] args) {
-    Dog obj = new Dog();
+    TaskDog obj = new TaskDog();
     obj.name="chintu";
     obj.breed="special";
     System.out.println(obj.breed);

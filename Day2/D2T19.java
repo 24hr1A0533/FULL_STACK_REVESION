@@ -1,15 +1,15 @@
-class Rectangle{
+class ConstructorRectangle{
   double length;
   double width;
-  Rectangle(){
+  ConstructorRectangle(){
     length=1.0;
     width=1.0;
   }
-  Rectangle(double side){
+  ConstructorRectangle(double side){
     length=side;
     width=side;
   }
-  Rectangle (double length,double width){
+  ConstructorRectangle(double length,double width){
     this.length=length;
     this.width=width;
   }
@@ -19,11 +19,11 @@ class Rectangle{
 }
 public class D2T19 {
   public static void main(String[] args) {
-    Rectangle obj=new Rectangle();
+    ConstructorRectangle obj=new ConstructorRectangle();
     obj.CalculateArea();
-     Rectangle obj1=new Rectangle(22.2);
+     ConstructorRectangle obj1=new ConstructorRectangle(22.2);
     obj1.CalculateArea();
-     Rectangle obj3=new Rectangle(99.2,88.2);
+     ConstructorRectangle obj3=new ConstructorRectangle(99.2,88.2);
     obj3.CalculateArea();
 
   }

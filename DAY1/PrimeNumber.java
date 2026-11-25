@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class PrimeNumber {
   public static void main(String[] args) {
-    Scanner data=new Scanner(System.in);
+    try (Scanner data=new Scanner(System.in)) {
      boolean prime =false;
     System.out.println("Eneter a number to check it is prime number or not ");
     int num=data.nextInt();
@@ -16,8 +16,9 @@ public class PrimeNumber {
 
         }
       }
+      }
+      System.out.println(prime ? "not a prime number" : "prime number");
     }
-    System.out.println( prime ? "not a prime number" : "prime number");
   }
   
 }

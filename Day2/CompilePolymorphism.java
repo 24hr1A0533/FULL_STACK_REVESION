@@ -1,4 +1,4 @@
-class Calculator{
+class CompileCalculator{
   int add(int a , int b){
     return a+b;
   }
@@ -11,7 +11,7 @@ class Calculator{
 }
 class CompilePloymorphism{
   public static void main(String[] args) {
-    Calculator obj = new Calculator();
+    CompileCalculator obj = new CompileCalculator();
     System.out.println(obj.add(2,2));
     System.out.println(obj.add(2,2,6));
     System.out.println(obj.add(2.3f,2.4f));

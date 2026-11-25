@@ -1,4 +1,4 @@
-class Rectangle{
+class PropertiesRectangle{
   private double length;
   private double width;
   public double getLength() {
@@ -22,7 +22,7 @@ class Rectangle{
 }
 public class CalculatedProperties {
   public static void main(String[] args) {
-    Rectangle obj = new Rectangle();
+    PropertiesRectangle obj = new PropertiesRectangle();
     obj.setLength(99);
     obj.setWidth(88);
     System.out.println( obj.getLength());

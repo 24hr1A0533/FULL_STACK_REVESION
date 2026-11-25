@@ -6,13 +6,14 @@ public class TryCatch {
     int b=0;
     try{
       int c=a/b;
+      System.out.println(c);
     }catch(Exception e){
       System.out.println("cant devide with zero"+e);
     }
-    String name=null;
+    String name=getStringValue();
     try{
       System.out.println(name.length());
-    }catch(Exception e){
+    }catch(NullPointerException e){
       System.out.println("null please give a value for the string"+e);
     }
     int [] arr=new int[3];
@@ -35,6 +36,7 @@ public class TryCatch {
     String num="ki";
     try{
     int nums=Integer.parseInt(num);
+    System.out.println(nums);
     }catch(Exception e){
       System.out.println("number coversion error "+num);
     }
@@ -42,5 +44,9 @@ public class TryCatch {
       System.out.println("finally....");
     }
 
+  }
+
+  private static String getStringValue() {
+    return null;
   }
 }

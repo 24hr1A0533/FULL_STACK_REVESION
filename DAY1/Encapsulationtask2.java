@@ -1,6 +1,12 @@
-class BankAccount{
+class EncapsulationBankAccount{
   private String accountHolder;
   private double balance=100000;
+  public EncapsulationBankAccount() {
+    this.accountHolder = "Unknown";
+  }
+  public String getAccountHolder() {
+    return accountHolder;
+  }
   public void getBalance() {
     if(balance<0){
       System.out.println("invalid balance");
@@ -18,7 +24,7 @@ class BankAccount{
 }
 public class Encapsulationtask2 {
   public static void main(String[] args) {
-    BankAccount obj = new BankAccount();
+    EncapsulationBankAccount obj = new EncapsulationBankAccount();
     obj.getBalance();
     
     obj.Deposit(1000000);

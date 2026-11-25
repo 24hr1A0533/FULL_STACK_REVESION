@@ -1,10 +1,10 @@
-class Employee{
+class SalaryEmployee{
   double baseSalary;
   double calculateSalary(){
     return baseSalary;
   }
 }
-class SalesEmployee extends Employee{
+class SalesEmployee extends SalaryEmployee{
   double bonus;
   double calculateSalary(){
     return super.calculateSalary() + bonus;

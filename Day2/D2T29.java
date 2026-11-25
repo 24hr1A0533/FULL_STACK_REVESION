@@ -1,7 +1,7 @@
-class Mobile{
+class D2T29Mobile{
   String brand;
   double price;
-  Mobile(){
+  D2T29Mobile(){
     brand = "Samsung";
     price = 25000;
   }
@@ -11,7 +11,7 @@ class Mobile{
 }
 public class D2T29 {
   public static void main(String[] args) {
-    Mobile obj = new Mobile();
+    D2T29Mobile obj = new D2T29Mobile();
     obj.displayDetails();
   }
   

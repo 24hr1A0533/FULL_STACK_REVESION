@@ -1,11 +1,12 @@
 package Day3;
 
 import java.io.FileReader;
-import java.io.FileNotFoundException;
 
 public class throwsKeyword {
   public static void OpenFile() throws Exception{
-    FileReader obj = new FileReader("index.txt");
+    try (FileReader obj = new FileReader("index.txt")) {
+      obj.read();
+    }
   }
   public static void main(String[] args) {
     try{

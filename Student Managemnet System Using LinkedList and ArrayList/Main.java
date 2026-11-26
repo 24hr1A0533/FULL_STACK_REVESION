@@ -46,7 +46,16 @@ public class Main {
     searchStudent();
     }else if (choise == 4) {
     updateStudentMarks();
+    }else if (choise == 5) {
+    removeStudent();   
+    }else if (choise == 6) {
+    addAttendance();
+    }else if (choise == 7) {
+    displayAttendance();
     }
+    else if (choise == 8) {
+    removeAttendance();
+}
 
 
    
@@ -147,4 +156,81 @@ public static void updateStudentMarks() {
     System.out.println("marks update is success");
 
 }
+  public static void removeStudent(){
+    System.out.println("========== DELETE STUDENT ==========");
+    System.out.print("Enter Student ID: ");
+    int id = sc.nextInt();
+
+    int index = studentIds.indexOf(id);
+
+    if (index == -1) {
+        System.out.println("Student Not Found!");
+        return;
+    }
+    studentIds.remove(index);
+    studentMarks.remove(index);
+    studentNames.remove(index);
+    System.out.println("Student Removed Successfully!");
+  }
+  public static void addAttendance() {
+
+    System.out.println("========== ADD ATTENDANCE ==========");
+
+    System.out.print("Enter Student Name: ");
+    sc.nextLine();
+    String name = sc.nextLine();
+
+    System.out.println("1. Add at Beginning");
+    System.out.println("2. Add at Ending");
+
+    System.out.print("Enter your choice: ");
+    int choice = sc.nextInt();
+
+    if (choice == 1) {
+        attendance.addFirst(name);
+        System.out.println("Attendance added at beginning!");
+    }
+    else if (choice == 2) {
+        attendance.addLast(name);
+        System.out.println("Attendance added at ending!");
+    }
+    else {
+        System.out.println("Invalid choice!");
+    }
+}
+public static void displayAttendance() {
+
+    System.out.println("========== STUDENT ATTENDANCE ==========");
+
+    if (attendance.isEmpty()) {
+        System.out.println("No attendance records found!");
+        return;
+    }
+
+    System.out.println("Attendance List:");
+
+    for (int i = 0; i < attendance.size(); i++) {
+        System.out.println((i + 1) + ". " + attendance.get(i));
+    }
+
+    System.out.println("Total Attendance: " + attendance.size());
+}
+public static void removeAttendance(){
+  System.out.println("========== REMOVE ATTENDANCE ==========");
+
+    if (attendance.isEmpty()) {
+        System.out.println("No attendance records found!");
+        return;
+    }
+    System.out.println("Enter a student name to Remove:");
+    sc.nextLine();
+    String name=sc.nextLine();
+    if(attendance.contains(name)){
+      attendance.remove(name);
+       System.out.println("attendence removed success");
+    }else{
+      System.out.println("Attendance Not Found!");
+    }
+}
+
 }

@@ -25,6 +25,13 @@ public class D4T4 {
 
    System.out.println(song.contains("song3"));
 
+    for(String k:song){
+      System.out.println("song playing..."+k);
+      song.removeFirst();
+     
+      
+
+    }
    
    
   }

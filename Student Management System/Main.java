@@ -179,21 +179,16 @@ public class Main {
        for (int i = 0; i < studentcount; i++) {
       if (students[i].getStudentID() == searchID) {
        students[i].displayMarks();
-
        found = true;
         break;
        }
        }
-
        if (!found) {
        System.out.println("Student Not Found!");
       }
-
       break;
     }
-
       case 3:{
-
       System.out.println("Enter Student ID to Delete:");
      int deleteID = sc.nextInt();
      int deleteIndex = -1;
@@ -227,10 +222,6 @@ public class Main {
       break;
     }
    }
-  
-
-
-
     sc.close();
   }
   

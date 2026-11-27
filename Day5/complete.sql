@@ -497,26 +497,525 @@ select gender,avg(marks) from students
 group by gender having avg(marks)>80;
 select department,avg(marks),count(*) from students 
 group by department having avg(marks)>75 and count(*)>=3;
+create table  departments1(
+department_id int ,
+department_name varchar(90),
+hod_name varchar(90)
+);
+create table studentCourses(
+course_id int ,
+student_id int,
+course_name varchar(90),
+free bigint
+);
+INSERT INTO Departments1 VALUES
+(1, 'CSE', 'Mr. Kumar'),
+(2, 'ECE', 'Mrs. Lakshmi'),
+(3, 'ISE', 'Mr. Raj'),
+(4, 'MECH', 'Mr. Anand'),
+(5, 'CIVIL', 'Mrs. Priya');
+
+INSERT INTO StudentCourses VALUES
+(201, 101, 'Java', 5000),
+(202, 102, 'Python', 4500),
+(203, 103, 'Java', 5000),
+(204, 104, 'Web Development', 6000),
+(205, 106, 'Python', 4500),
+(206, 101, 'SQL', 3000);
+
+desc students;
+select * from students;
+
+ALTER TABLE Students
+ADD department_id INT;
+UPDATE Students SET department_id = 1 WHERE student_id = 101;
+UPDATE Students SET department_id = 2 WHERE student_id = 102;
+UPDATE Students SET department_id = 1 WHERE student_id = 103;
+UPDATE Students SET department_id = 3 WHERE student_id = 104;
+UPDATE Students SET department_id = 4 WHERE student_id = 105;
+UPDATE Students SET department_id = 2 WHERE student_id = 106;
+CREATE TABLE Departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50),
+    hod_name VARCHAR(50)
+);
+
+create database timepass;
+use timepass;
+CREATE TABLE Students (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(50),
+    age INT,
+    city VARCHAR(50),
+    department_id INT
+);
+INSERT INTO Students VALUES
+(101, 'Rahul', 20, 'Bangalore', 1),
+(102, 'Priya', 21, 'Mysore', 2),
+(103, 'Amit', 20, 'Delhi', 1),
+(104, 'Sneha', 22, 'Hyderabad', 3),
+(105, 'Kiran', 21, 'Chennai', 4),
+(106, 'Anjali', 20, 'Pune', 2);
+
+CREATE TABLE Departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(30),
+    hod_name VARCHAR(50)
+);
+INSERT INTO Departments VALUES
+(1, 'CSE', 'Mr. Kumar'),
+(2, 'ECE', 'Mrs. Lakshmi'),
+(3, 'ISE', 'Mr. Raj'),
+(4, 'MECH', 'Mr. Anand'),
+(5, 'CIVIL', 'Mrs. Priya');
+
+CREATE TABLE Student_Courses (
+    course_id INT PRIMARY KEY,
+    student_id INT,
+    course_name VARCHAR(50),
+    fee DECIMAL(10,2)
+);
+INSERT INTO Student_Courses VALUES
+(201, 101, 'Java', 5000),
+(202, 102, 'Python', 4500),
+(203, 103, 'Java', 5000),
+(204, 104, 'Web Development', 6000),
+(205, 106, 'Python', 4500),
+(206, 101, 'SQL', 3000);
+
+
+SELECT s.student_name, d.department_name
+FROM Students s
+INNER JOIN Departments d
+ON s.department_id = d.department_id;
+
+SELECT s.student_id,
+       s.student_name,
+       d.hod_name
+FROM Students s
+INNER JOIN Departments d
+ON s.department_id = d.department_id;
+SELECT s.*
+FROM Students s
+INNER JOIN Departments d
+ON s.department_id = d.department_id
+WHERE d.department_name = 'CSE';
+
+SELECT s.*
+FROM Students s
+INNER JOIN Departments d
+ON s.department_id = d.department_id
+WHERE d.department_name = 'CSE';
+SELECT s.student_id,
+       s.student_name,
+       s.age,
+       s.city,
+       d.department_name,
+       d.hod_name
+FROM Students s
+INNER JOIN Departments d
+ON s.department_id = d.department_id;
+
+SELECT s.student_id,
+       s.student_name,
+       s.age,
+       s.city,
+       d.department_name,
+       d.hod_name
+FROM Students s
+INNER JOIN Departments d
+ON s.department_id = d.department_id;
+SELECT s.student_id,
+       s.student_name,
+       d.department_name
+FROM Students s
+INNER JOIN Departments d
+ON s.department_id = d.department_id
+WHERE d.department_name IN ('ECE', 'ISE');
+
+
+INSERT INTO Students VALUES
+(107, 'Ravi', 22, 'Mumbai', 6);
+SELECT s.student_id,
+       s.student_name,
+       d.department_name
+FROM Students s
+LEFT JOIN Departments d
+ON s.department_id = d.department_id;
+SELECT s.student_id,
+       s.student_name,
+       d.department_name
+FROM Students s
+LEFT JOIN Departments d
+ON s.department_id = d.department_id;
+SELECT s.student_id,
+       s.student_name
+FROM Students s
+LEFT JOIN Departments d
+ON s.department_id = d.department_id
+WHERE d.department_id IS NULL;
+SELECT s.student_id,
+       s.student_name,
+       d.department_name,
+       d.hod_name
+FROM Students s
+LEFT JOIN Departments d
+ON s.department_id = d.department_id;
+
+
+
+SELECT d.department_id,
+       d.department_name,
+       s.student_name
+FROM Students s
+RIGHT JOIN Departments d
+ON s.department_id = d.department_id;
+SELECT d.department_name,
+       s.student_name
+FROM Students s
+RIGHT JOIN Departments d
+ON s.department_id = d.department_id;
+SELECT d.department_id,
+       d.department_name
+FROM Students s
+RIGHT JOIN Departments d
+ON s.department_id = d.department_id
+WHERE s.student_id IS NULL;
+SELECT d.department_name,
+       COUNT(s.student_id) AS student_count
+FROM Students s
+RIGHT JOIN Departments d
+ON s.department_id = d.department_id
+GROUP BY d.department_name;
+
+
+SELECT s.student_name,
+       sc.course_name
+FROM Students s
+INNER JOIN Student_Courses sc
+ON s.student_id = sc.student_id;
+SELECT s.student_name,
+       sc.course_name
+FROM Students s
+INNER JOIN Student_Courses sc
+ON s.student_id = sc.student_id
+WHERE s.student_id = 101;
+SELECT s.student_id,
+       s.student_name
+FROM Students s
+INNER JOIN Student_Courses sc
+ON s.student_id = sc.student_id
+WHERE sc.course_name = 'Java';
+SELECT s.student_name,
+       sc.course_name,
+       sc.fee
+FROM Students s
+INNER JOIN Student_Courses sc
+ON s.student_id = sc.student_id;
+SELECT s.student_id,
+       s.student_name,
+       COUNT(sc.course_id) AS total_courses
+FROM Students s
+INNER JOIN Student_Courses sc
+ON s.student_id = sc.student_id
+GROUP BY s.student_id, s.student_name
+HAVING COUNT(sc.course_id) > 1;
 
 
 
 
+SELECT s.student_name,
+       d.department_name,
+       sc.course_name
+FROM Students s
+INNER JOIN Departments d
+ON s.department_id = d.department_id
+INNER JOIN Student_Courses sc
+ON s.student_id = sc.student_id;
+SELECT s.student_name,
+       d.hod_name,
+       sc.fee
+FROM Students s
+INNER JOIN Departments d
+ON s.department_id = d.department_id
+INNER JOIN Student_Courses sc
+ON s.student_id = sc.student_id;
+SELECT s.student_name,
+       d.department_name,
+       sc.course_name
+FROM Students s
+INNER JOIN Departments d
+ON s.department_id = d.department_id
+INNER JOIN Student_Courses sc
+ON s.student_id = sc.student_id
+WHERE d.department_name = 'CSE'
+  AND sc.course_name = 'Java';
+  SELECT d.department_name,
+       COUNT(sc.course_id) AS enrollment_count
+FROM Students s
+INNER JOIN Departments d
+ON s.department_id = d.department_id
+INNER JOIN Student_Courses sc
+ON s.student_id = sc.student_id
+GROUP BY d.department_name;
+SELECT s.student_name,
+       sc.course_name,
+       sc.fee
+FROM Students s
+INNER JOIN Student_Courses sc
+ON s.student_id = sc.student_id
+WHERE sc.fee > 4000;
+SELECT d.department_name,
+       SUM(sc.fee) AS total_fee
+FROM Students s
+INNER JOIN Departments d
+ON s.department_id = d.department_id
+INNER JOIN Student_Courses sc
+ON s.student_id = sc.student_id
+GROUP BY d.department_name;
+
+SELECT s.*, d.department_name, d.hod_name
+FROM Students s
+INNER JOIN Departments d
+ON s.department_id = d.department_id;
+
+SELECT s.student_name, sc.course_name
+FROM Students s
+INNER JOIN Student_Courses sc
+ON s.student_id = sc.student_id;
+
+SELECT s.student_id, s.student_name
+FROM Students s
+LEFT JOIN Student_Courses sc
+ON s.student_id = sc.student_id
+WHERE sc.course_id IS NULL;
+
+SELECT d.department_id, d.department_name
+FROM Departments d
+LEFT JOIN Students s
+ON d.department_id = s.department_id
+WHERE s.student_id IS NULL;
+
+SELECT d.department_name,
+       COUNT(s.student_id) AS total_students
+FROM Departments d
+LEFT JOIN Students s
+ON d.department_id = s.department_id
+GROUP BY d.department_name;
+
+SELECT d.department_name,
+       SUM(sc.fee) AS total_fee
+FROM Students s
+INNER JOIN Departments d
+ON s.department_id = d.department_id
+INNER JOIN Student_Courses sc
+ON s.student_id = sc.student_id
+GROUP BY d.department_name;
+
+SELECT d.department_name,
+       COUNT(s.student_id) AS total_students
+FROM Departments d
+LEFT JOIN Students s
+ON d.department_id = s.department_id
+GROUP BY d.department_name
+ORDER BY total_students DESC
+LIMIT 1;
+
+SELECT d.department_name,
+       AVG(s.marks) AS average_marks
+FROM Students s
+INNER JOIN Departments d
+ON s.department_id = d.department_id
+GROUP BY d.department_name
+ORDER BY average_marks DESC
+LIMIT 1;
+
+SELECT s.student_name,
+       s.marks,
+       d.department_name
+FROM Students s
+INNER JOIN Departments d
+ON s.department_id = d.department_id
+ORDER BY s.marks DESC
+LIMIT 5;
+
+SELECT s.student_name,
+       d.department_name,
+       d.hod_name,
+       sc.course_name,
+       sc.fee
+FROM Students s
+INNER JOIN Departments d
+ON s.department_id = d.department_id
+INNER JOIN Student_Courses sc
+ON s.student_id = sc.student_id;
 
 
+CREATE DATABASE company_management;
 
+USE company_management;
 
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    employee_name VARCHAR(50),
+    age INT,
+    gender VARCHAR(10),
+    department VARCHAR(30),
+    salary DECIMAL(10,2),
+    city VARCHAR(30)
+);
 
+INSERT INTO employees VALUES
+(101, 'Rahul', 25, 'Male', 'IT', 50000, 'Bangalore'),
+(102, 'Priya', 28, 'Female', 'HR', 45000, 'Hyderabad'),
+(103, 'Amit', 30, 'Male', 'Finance', 60000, 'Chennai'),
+(104, 'Sneha', 27, 'Female', 'IT', 55000, 'Pune'),
+(105, 'Kiran', 29, 'Male', 'Marketing', 48000, 'Mumbai'),
+(106, 'Anjali', 26, 'Female', 'HR', 47000, 'Delhi'),
+(107, 'Ravi', 31, 'Male', 'IT', 65000, 'Bangalore'),
+(108, 'Divya', 24, 'Female', 'Finance', 52000, 'Hyderabad'),
+(109, 'Arjun', 32, 'Male', 'Marketing', 58000, 'Chennai'),
+(110, 'Meena', 27, 'Female', 'IT', 54000, 'Pune');
 
+SELECT * FROM employees;
 
+SELECT employee_name, salary
+FROM employees;
 
+SELECT DISTINCT department
+FROM employees;
 
+SELECT *
+FROM employees
+WHERE department = 'IT';
 
+SELECT *
+FROM employees
+WHERE salary > 30000;
 
+SELECT *
+FROM employees
+WHERE salary < 50000;
 
+SELECT *
+FROM employees
+WHERE salary = 40000;
 
+SELECT *
+FROM employees
+WHERE department = 'IT'
+AND salary > 35000;
 
+SELECT *
+FROM employees
+WHERE department = 'HR'
+OR department = 'Finance';
 
+SELECT *
+FROM employees
+WHERE NOT department = 'IT';
 
+SELECT *
+FROM employees
+WHERE age BETWEEN 22 AND 30;
+CREATE TABLE products (
+    product_id INT PRIMARY KEY,
+    product_name VARCHAR(50),
+    category VARCHAR(30),
+    price DECIMAL(10,2),
+    stock_quantity INT
+);
 
+INSERT INTO products VALUES
+(101, 'Laptop', 'Electronics', 55000, 15),
+(102, 'Smartphone', 'Electronics', 30000, 8),
+(103, 'Headphones', 'Electronics', 2000, 25),
+(104, 'Refrigerator', 'Home Appliances', 40000, 5),
+(105, 'Microwave', 'Home Appliances', 12000, 12),
+(106, 'Office Chair', 'Furniture', 7000, 20),
+(107, 'Study Table', 'Furniture', 9000, 7),
+(108, 'Smart Watch', 'Electronics', 15000, 18),
+(109, 'Printer', 'Electronics', 8000, 6),
+(110, 'Air Conditioner', 'Home Appliances', 45000, 4);
 
+SELECT *
+FROM products
+ORDER BY price ASC;
 
+SELECT *
+FROM products
+ORDER BY price DESC;
+
+SELECT *
+FROM products
+ORDER BY price DESC
+LIMIT 5;
+
+SELECT *
+FROM products
+WHERE stock_quantity < 10;
+
+SELECT *
+FROM products
+ORDER BY price ASC
+LIMIT 3;
+
+SELECT *
+FROM products
+WHERE category = 'Electronics'
+ORDER BY price ASC;
+
+CREATE TABLE sales (
+    sale_id INT PRIMARY KEY,
+    product_name VARCHAR(50),
+    category VARCHAR(30),
+    quantity INT,
+    price DECIMAL(10,2),
+    sale_date DATE
+);
+
+INSERT INTO sales VALUES
+(101, 'Laptop', 'Electronics', 2, 55000, '2026-01-10'),
+(102, 'Smartphone', 'Electronics', 3, 30000, '2026-01-12'),
+(103, 'Headphones', 'Electronics', 5, 2000, '2026-01-15'),
+(104, 'Refrigerator', 'Home Appliances', 1, 40000, '2026-01-18'),
+(105, 'Microwave', 'Home Appliances', 2, 12000, '2026-01-20'),
+(106, 'Office Chair', 'Furniture', 4, 7000, '2026-01-22'),
+(107, 'Study Table', 'Furniture', 2, 9000, '2026-01-24'),
+(108, 'Smart Watch', 'Electronics', 3, 15000, '2026-01-26'),
+(109, 'Printer', 'Electronics', 2, 8000, '2026-01-28'),
+(110, 'Air Conditioner', 'Home Appliances', 1, 45000, '2026-02-01'),
+(111, 'Laptop', 'Electronics', 1, 55000, '2026-02-03'),
+(112, 'Smartphone', 'Electronics', 2, 30000, '2026-02-05'),
+(113, 'Office Chair', 'Furniture', 3, 7000, '2026-02-08'),
+(114, 'Microwave', 'Home Appliances', 1, 12000, '2026-02-10'),
+(115, 'Smart Watch', 'Electronics', 4, 15000, '2026-02-12');
+
+SELECT COUNT(*) AS total_sales
+FROM sales;
+
+SELECT SUM(quantity) AS total_quantity_sold
+FROM sales;
+
+SELECT AVG(price) AS average_product_price
+FROM sales;
+
+SELECT MAX(price) AS highest_price,
+       MIN(price) AS lowest_price
+FROM sales;
+
+SELECT category,
+       SUM(quantity * price) AS total_sales_amount
+FROM sales
+GROUP BY category;
+
+SELECT category,
+       COUNT(*) AS number_of_sales
+FROM sales
+GROUP BY category;
+
+SELECT category,
+       SUM(quantity * price) AS total_sales_amount
+FROM sales
+GROUP BY category
+HAVING SUM(quantity * price) > 50000;
